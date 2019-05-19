@@ -2,10 +2,10 @@ var friends = require("../data/friends.js");
 
 //route and API GET and POST requests
 module.exports = function(app){
-    app.get("/api/friends", function(req, res){
+    app.get('/api/friends', function(req, res){
         res.json(friends);
     });
-    app.post("/api/friends", function(req, res){
+    app.post('/api/friends', function(req, res){
         var totalDifference = 0;
         var bestMatch = {
             name: "",
@@ -15,13 +15,13 @@ module.exports = function(app){
         var userData = req.body;
         var userName = userData.name;
         var userScore = userData.score;
-        var bestScore = userScore.map(function(item){
+        var b = userScore.map(function(item){
             return parseInt(item, 10);
         });
         userData = {
             "name": req.body.name,
             "photo": req.body.photo,
-            "score": bestScore
+            "score": b
         }
         console.log("name: " + userName);
         console.log("user score " + userScore);
@@ -34,7 +34,7 @@ module.exports = function(app){
             totalDifference = 0;
 
             var bestFriendScore = friends[i].scores.reduce((a,b)=> a + b, 0);
-            totalDifference += Math.abs(sum- bestFriendScore);
+            totalDifference += Math.abs(sum - bestFriendScore);
         }   
         friends.push(userData);
         res.json(bestMatch);     

@@ -22,7 +22,6 @@ var friends = [{
     "name": "Jackson",
     // "photo":
     "score": [5, 3, 3, 1, 5, 2, 1, 2, 5, 4,]
-},{
 }]
 
 module.exports = friends;
